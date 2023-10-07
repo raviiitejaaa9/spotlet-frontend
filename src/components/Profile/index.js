@@ -4,14 +4,25 @@ import NavbarComponent from "../NavbarComponent"
 import "./index.css"
 const Profile = () => {
 
-    // const userInfo = localStorage.getItem("userProfileData");
+    const userInfo = localStorage.getItem("userProfileData");
     const username = localStorage.getItem("username");
 
     const jwtToken = Cookies.get("jwt_token");
    
-    // const parsedUserInfo = JSON.parse(userInfo);
+    const parsedUserInfo = JSON.parse(userInfo);
     // console.log(parsedUserInfo)
-    // const {email, mobileNumber} = parsedUserInfo;
+    let originalNumber ;
+    const {email, mobileNumber} = parsedUserInfo;
+    const numberLength = mobileNumber.toString().length 
+    if (numberLength < 10) {
+        const deficit = 10 - numberLength;
+        // console.log(deficit)
+        const zeros  = "0".repeat(deficit);
+        originalNumber = `${zeros}${mobileNumber.toString()}`
+    }
+    else{
+        originalNumber = mobileNumber;
+    }
 
     const [mail,setMail] = useState("");
     const [number,setNumber] = useState("");
@@ -67,8 +78,8 @@ const Profile = () => {
                  />
                  <div className="profile-details-sec" >
                         <h1 className="profile-head-el" > <span className="profile-span-el"> Username : </span>  {username}</h1>
-                        <h1 className="profile-head-el"> <span className="profile-span-el" > Mobile Number :  </span>{number} </h1>
-                        <h1 className="profile-head-el"> <span className="profile-span-el" > Email : </span> {mail}  </h1>
+                        <h1 className="profile-head-el"> <span className="profile-span-el" > Mobile Number :  </span>{originalNumber} </h1>
+                        <h1 className="profile-head-el"> <span className="profile-span-el" > Email : </span> {email}  </h1>
                  </div>
             </div>
         )
