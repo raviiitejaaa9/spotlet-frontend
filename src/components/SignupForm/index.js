@@ -102,7 +102,7 @@ const SignupForm = () => {
     const onBlurLastName = (event) => {
         const enteredLastName = event.target.value
         // console.log(event.target.value)
-        const isValidInput = /^[A-Za-z]+$/.test(enteredLastName);
+        const isValidInput = /^[A-Za-z\s]+$/.test(enteredLastName);
         if (!isValidInput) {
             setLastNameErrorMsg("*only Alphabets please")
         }
