@@ -97,12 +97,12 @@ const LoginForm = () => {
 
     const onChangeEmail = (event) => {
         // console.log("onChange Email Triggered")
-        setUserEmail(event.target.value)
+        setUserEmail(event.target.value.trim())
     }
 
     const onChangePassword = (event) => {
         // console.log("onChange Password Triggered")
-        setUserPassword(event.target.value)
+        setUserPassword(event.target.value.trim())
     }
 
     // if user want to signup 

@@ -83,7 +83,7 @@ const SignupForm = () => {
     //onBlur events 
     const  onBlurFirstName = (event) => {
         // console.log("blur first name")
-        const enteredFirstName = event.target.value
+        const enteredFirstName = event.target.value.trim();
         // console.log(event.target.value)
         if (enteredFirstName.length < 5){
             setFirstNameErrorMsg("*First name should be minimum 5 characters")
@@ -100,7 +100,7 @@ const SignupForm = () => {
     }
 
     const onBlurLastName = (event) => {
-        const enteredLastName = event.target.value
+        const enteredLastName = event.target.value.trim();
         // console.log(event.target.value)
         const isValidInput = /^[A-Za-z\s]+$/.test(enteredLastName);
         if (!isValidInput) {
@@ -112,7 +112,7 @@ const SignupForm = () => {
     }
 
     const onblurMobileNumber = (event) => {
-        const enteredMobileNumber = event.target.value;
+        const enteredMobileNumber = event.target.value.trim();
 
         if(enteredMobileNumber.toString().length === 10) {
             const isValidInput = /^[0-9]+$/.test(enteredMobileNumber);
@@ -129,7 +129,7 @@ const SignupForm = () => {
     }
 
     const onBlurEmail = (event) => {
-        const enteredEmail = event.target.value 
+        const enteredEmail = event.target.value.trim();
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         const isEmailValid = emailPattern.test(enteredEmail);
         if (isEmailValid) {
@@ -141,7 +141,7 @@ const SignupForm = () => {
     }
 
     const onBlurPassword = (event) => {
-        const enteredPassword = event.target.value;
+        const enteredPassword = event.target.value.trim();
 
         const hasUpperCase = /[A-Z]/.test(enteredPassword);
         const hasLowerCase = /[a-z]/.test(enteredPassword);
@@ -162,25 +162,25 @@ const SignupForm = () => {
 
     const onChangeFirstName = (event) => {
         // console.log("change first name");
-        const enteredName = event.target.value;
+        const enteredName = event.target.value.trim();
         setFirstName(enteredName)
         
     } 
 
     const onChangeLastName = (event) => {
-        setLastname(event.target.value)
+        setLastname(event.target.value.trim())
     }
 
     const onChangeMobileNumber = (event) =>{
-        setMobileNumber(event.target.value);
+        setMobileNumber(event.target.value.trim());
     }
 
     const onChangeEmail = (event) => {
-        setEmail(event.target.value);
+        setEmail(event.target.value.trim());
     }
 
     const onChangePassword = (event) => {
-        setPassword(event.target.value);
+        setPassword(event.target.value.trim());
     }
 
     // onClickSignupLogin 
