@@ -236,7 +236,7 @@ const SignupForm = () => {
 
                 <p className="signup-error-msg" > {submitErrorMessage} </p>
 
-                <p className="signup-success-msg" > {submitSuccessMessage} </p>
+                <p className="signup-error-msg signup-success-msg" > {submitSuccessMessage} </p>
 
                 <p className="login-signup" onClick = {onClickSignupLogin} > Alredy Registered. Do you Want to Signin ?  </p>
 

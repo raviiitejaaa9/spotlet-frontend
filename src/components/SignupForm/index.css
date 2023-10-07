@@ -69,6 +69,10 @@
     margin-bottom: 20px;
 }
 
+.signup-success-msg{
+    color: #0daf0d;
+}
+
 .signup-error-msg{
     color: red;
     text-align: center;
