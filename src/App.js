@@ -2,6 +2,9 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Home from "./components/Home"
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
+import Dashboard from "./components/Dashboard";
+import Profile from "./components/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
 import './App.css';
 
 function App() {
@@ -12,6 +15,8 @@ function App() {
         <Route path = "/" element = {<Home/>}/>
         <Route path = "/signup" element = {<SignupForm/>} />
         <Route path = "/login" element = {<LoginForm/>} />
+        <Route path = "/dashboard" element = {<ProtectedRoute element={<Dashboard/>}/>} />
+        <Route path = "/profile" element = {<ProtectedRoute element={<Profile/>}/>}  />
       </Routes>
       </BrowserRouter>
     </div>

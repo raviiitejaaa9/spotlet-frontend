@@ -32,6 +32,13 @@
     padding: 10px;
 }
 
+.login-signup{
+    text-decoration: underline;
+    cursor: pointer;
+    outline: #0f0f80;
+    text-align: center;
+}
+
 @media (max-width:800px){
     .signup-login-container{
         flex-direction: column;

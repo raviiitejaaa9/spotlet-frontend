@@ -1,4 +1,6 @@
 import {useState} from "react"
+import { useNavigate } from "react-router-dom"
+import Cookies from "js-cookie"
 import "./index.css"
 
 
@@ -7,6 +9,17 @@ const LoginForm = () => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
+
+    // what happens on successful login 
+    const onSuccessfulLogin = async(id,name,userProfileData) => {
+        Cookies.set("jwt_token", `${id}`)
+        const userProfileStringifiedData = JSON.stringify(userProfileData)
+        
+        await localStorage.setItem("username",name);
+        await localStorage.setItem("userProfileData", userProfileStringifiedData)
+        navigate("/dashboard");
+    }
 
 
     // On Submitting Login What Happens
@@ -16,21 +29,38 @@ const LoginForm = () => {
 
         const userInfo = {
             userEmail,
-            userPassword
+            userPassword 
         }
 
         const loginUrl = "https://quasar-colossal-wing.glitch.me/api/auth/login"
+        // const loginLocalHostUrl = "http://localhost:4000/api/auth/login"
         const loginOptions = {
+            mode: 'cors',
             method : "POST",
-            headers : {
-                "Content-Type" : "application/json"
+            headers: {
+                "Content-Type": "application/json", 
             },
+            
             body : JSON.stringify(userInfo),
 
         }
 
         const response = await fetch(loginUrl,loginOptions);
-        console.log(response);
+        // console.log(response);
+
+        if (response.ok){
+            const jsonData = await response.json();
+            const {userId,userData} = jsonData;
+            const {firstName, lastName} = userData;
+            
+            const userName = firstName + " " + lastName
+            onSuccessfulLogin(userId,userName,userData);
+        }
+        else{
+            const jsonData = await response.json();
+            // console.log(jsonData)
+            setErrorMessage(jsonData.message)
+        }
         
     
     }
@@ -68,6 +98,11 @@ const LoginForm = () => {
         setUserPassword(event.target.value)
     }
 
+    // if user want to signup 
+    const onClickLoginSignup = () => {
+        navigate("/");
+    }
+
     const loginForm = () => {
         return(
             <form className="login-form" onSubmit = {onSubmitLogin} >
@@ -85,6 +120,8 @@ const LoginForm = () => {
                     <button  className="login-button" type = "submit" > Login </button>
                 </div>
                 <p className="error-msg" > {errorMessage} </p>
+
+                <p className="login-signup" onClick = {onClickLoginSignup} > Not Registered Yet. Do you Want to Signup ?  </p>
             </form> 
         )
     }

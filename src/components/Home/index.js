@@ -6,12 +6,12 @@ const Home = () => {
     const navigate = useNavigate()
 
     const onHomeSignup = () => {
-        console.log("signup form triggered")
+        // console.log("signup form triggered")
         navigate("/signup")
     }
 
     const onHomeLogin = () => {
-        console.log("Login Form triggered")
+        // console.log("Login Form triggered")
         navigate("/login")
     }
 
