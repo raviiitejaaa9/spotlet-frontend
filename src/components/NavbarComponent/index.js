@@ -9,6 +9,8 @@ const NavbarComponent = () => {
     const onClickLogout = () => {
         Cookies.remove("jwt_token");
         navigate("/login");
+        localStorage.removeItem("username");
+        localStorage.removeItem("userProfiledData");
     }
 
     const onClickNavLogo = () => {

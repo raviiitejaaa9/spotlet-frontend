@@ -23,47 +23,47 @@ const LoginForm = () => {
 
 
     // On Submitting Login What Happens
-    const onSubmitLogin =  async(event) => {
+    const onSubmitLogin = async (event) => {
         event.preventDefault();
-        console.log("Login Triggered")
-
+        console.log("Login Triggered");
+      
         const userInfo = {
-            userEmail,
-            userPassword 
-        }
-
-        const loginUrl = "https://quasar-colossal-wing.glitch.me/api/auth/login"
+          userEmail,
+          userPassword,
+        };
+      
+        const loginUrl = "https://quasar-colossal-wing.glitch.me/api/auth/login";
         // const loginLocalHostUrl = "http://localhost:4000/api/auth/login"
         const loginOptions = {
-            mode: 'cors',
-            method : "POST",
-            headers: {
-                "Content-Type": "application/json", 
-            },
-            
-            body : JSON.stringify(userInfo),
-
-        }
-
-        const response = await fetch(loginUrl,loginOptions);
-        // console.log(response);
-
-        if (response.ok){
+          mode: 'cors',
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        };
+      
+        try {
+          const response = await fetch(loginUrl, loginOptions);
+          if (response.ok) {
             const jsonData = await response.json();
-            const {userId,userData} = jsonData;
-            const {firstName, lastName} = userData;
-            
-            const userName = firstName + " " + lastName
-            onSuccessfulLogin(userId,userName,userData);
-        }
-        else{
+            const { userId, userData } = jsonData;
+            const { firstName, lastName } = userData;
+      
+            const userName = firstName + " " + lastName;
+            onSuccessfulLogin(userId, userName, userData);
+          } else {
             const jsonData = await response.json();
-            // console.log(jsonData)
-            setErrorMessage(jsonData.message)
+            // Handle the error here, e.g., set an error message state.
+            setErrorMessage(jsonData.message);
+          }
+        } 
+        catch (error) {
+            console.error("An error occurred:", error);
+            setErrorMessage(`An error occurred: ${error.message}`);
         }
-        
-    
-    }
+      };
+      
 
     // onBlurEvents
     const onBlurEmail = (event) => {
