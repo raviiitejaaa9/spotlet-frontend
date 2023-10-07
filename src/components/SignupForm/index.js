@@ -238,7 +238,7 @@ const SignupForm = () => {
 
                 <p className="signup-error-msg signup-success-msg" > {submitSuccessMessage} </p>
 
-                <p className="login-signup" onClick = {onClickSignupLogin} > Alredy Registered. Do you Want to Login ?  </p>
+                <p className="login-signup" onClick = {onClickSignupLogin} > Already Registered. Do you Want to Login ?  </p>
 
             </form>
         )
