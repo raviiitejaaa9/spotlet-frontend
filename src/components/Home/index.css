@@ -10,6 +10,12 @@
     align-items: center;
 }
 
+.home-head{
+    color: #016301;
+    font-weight: bold;
+    font-style: italic;
+}
+
 
 .guest-greeting{
     margin-right: 26px;

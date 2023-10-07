@@ -26,7 +26,8 @@ const Home = () => {
 
     return(
         <div className = "home-container" > 
-          
+
+            <h1 className="home-head" > SPOTLET </h1>  
             <h1 className="guest-greeting" > Welcome Guest User </h1>
             
             <div className="signup-login-container" >
