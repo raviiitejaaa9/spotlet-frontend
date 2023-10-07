@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import { useNavigate } from "react-router-dom"
 import Cookies from "js-cookie"
 import "./index.css"
@@ -10,6 +10,13 @@ const LoginForm = () => {
     const [userPassword, setUserPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const jwtToken = Cookies.get("jwt_token"); 
+        if (jwtToken) {
+          navigate("/dashboard");
+        }
+      });
 
     // what happens on successful login 
     const onSuccessfulLogin = async(id,name,userProfileData) => {

@@ -1,5 +1,6 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./index.css"
 
 const SignupForm = () => {
@@ -24,6 +25,13 @@ const SignupForm = () => {
     const [submitSuccessMessage, setSubmitSuccessMessage] = useState("");
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const jwtToken = Cookies.get("jwt_token"); 
+        if (jwtToken) {
+          navigate("/dashboard");
+        }
+      });
 
     // what Happens on Submit Form 
     const onSubmitSignupForm = async (event) => {

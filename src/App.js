@@ -5,6 +5,7 @@ import LoginForm from "./components/LoginForm";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./components/NotFound";
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path = "/login" element = {<LoginForm/>} />
         <Route path = "/dashboard" element = {<ProtectedRoute element={<Dashboard/>}/>} />
         <Route path = "/profile" element = {<ProtectedRoute element={<Profile/>}/>}  />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </BrowserRouter>
     </div>

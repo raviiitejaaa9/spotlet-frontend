@@ -1,9 +1,18 @@
+import { useEffect } from "react"
 import {useNavigate} from "react-router-dom"
+import Cookies from "js-cookie"
 import "./index.css"
 
 const Home = () => {
     
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const jwtToken = Cookies.get("jwt_token"); 
+        if (jwtToken) {
+          navigate("/dashboard");
+        }
+      });
 
     const onHomeSignup = () => {
         // console.log("signup form triggered")
