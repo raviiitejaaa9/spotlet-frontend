@@ -19,6 +19,10 @@ const SignupForm = () => {
             </form>
         )
     }
+
+    return(
+        signupForm()
+    )
 }
 
 export default SignupForm
